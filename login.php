@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
     }
 }
-?
+?>
 
 <!DOCTYPE html>
 <html lang="th">
