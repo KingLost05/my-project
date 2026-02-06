@@ -1,4 +1,4 @@
-name: Test Login
+name: CI Pipeline
 
 on:
   push:
@@ -6,20 +6,15 @@ on:
       - main
 
 jobs:
-  test-login:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run login test (mock)
-        run: |
-          echo "Test Case 1: valid username & password → true"
-          echo "Test Case 2: invalid username or password → false"
-
-      - name: Check PHP syntax all files
+      - name: Check PHP syntax
         run: |
           for file in *.php; do
-            php -l "$file" || exit 1
+            php -l $file || exit 1
           done
