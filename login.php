@@ -18,7 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         $error_message = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
-    }
+    }if ($user && $password == $user['password']) {
+    echo "login success"; // ❌ บัคตรงนี้
+
+    $_SESSION['user_id'] = $user['id'];
+    $_SESSION['role'] = $user['role'];
+    $_SESSION['name'] = $user['name'];
+
+    header("Location: admin_menu.php"); // ❌ header จะพัง
+    exit();
+}
+
 }
 ?>
 
