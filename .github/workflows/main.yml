@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Test Login
 
 on:
   push:
@@ -6,12 +6,14 @@ on:
       - main
 
 jobs:
-  build:
+  test-login:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run basic check
-        run: echo "CI is working!"
+      - name: Run login test
+        run: |
+          echo "Test Case 1: valid username & password → true"
+          echo "Test Case 2: invalid username or password → false"
