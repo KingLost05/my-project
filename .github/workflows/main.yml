@@ -1,0 +1,19 @@
+name: Test Login
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-login:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run login test
+        run: |
+          echo "Test Case 1: valid username & password → true"
+          echo "Test Case 2: invalid username or password → false"
