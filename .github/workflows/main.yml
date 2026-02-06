@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI-CD PHP Check
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  test-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,3 +18,12 @@ jobs:
           for file in *.php; do
             php -l $file || exit 1
           done
+
+      - name: Start PHP built-in server
+        run: |
+          php -S localhost:8000 -t . &
+          sleep 3
+
+      - name: Health check (open page)
+        run: |
+          curl -f http://localhost:8000/login.php
